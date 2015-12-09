@@ -17,7 +17,7 @@ GPIO.setmode(GPIO.BCM)
 gp = [2, 3, 4, 14, 15, 18]  # Pins to Initialize
 for i in gp:
     GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    logging.debug(timenow() + ' GPIO ' + i + ' setup')
+    logging.debug(timenow() + ' GPIO ' + str(i) + ' setup')
 
 # interrupt pin setup
 cb = [interrupt1, interrupt2, interrupt3, interrupt4, interrupt5, interrupt6]  # list of interrupt functions
@@ -80,7 +80,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         r = timenow() - q
         e = int(r.total_seconds() / 60)
         if e != ltsec[i]:
-            logging.debug(timenow() + ' changing zone' + j + ' to ' + e)
+            logging.debug(timenow() + ' changing zone' + str(j) + ' to ' + str(e))
         ltsec[i] = e
         if e < yellowLimit:
             color = green
@@ -103,7 +103,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         if lm + timedelta(0, tba) < tm:
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 1 email sent at " + str(timenow())
-            logging.debug(str(timenow()) + " level 1 email sent")
+            logging.debug(timenow() + " level 1 email sent")
             lm = tm
             Violation(timenow(), 'zone', lvl, max(lastTime))
 
@@ -114,7 +114,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         if lm2 + timedelta(0, tba) < tm:  # check for last email sent and don't send if within tba
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 2 email sent at " + str(timenow())
-            logging.debug(str(timenow()) + " level 2 email sent")
+            logging.debug(timenow() + " level 2 email sent")
             lm2 = tm2
             Violation(timenow(), 'zone', lvl, max(lastTime))
 
