@@ -10,7 +10,7 @@ from sendmail import *
 
 os.putenv('SDL_FBDEV', '/dev/fb1')
 pygame.init()
-logging.basicConfig(filename='/logs/debug.log', level=logging.DEBUG)
+logging.basicConfig(filename='logs/debug.log', level=logging.DEBUG)
 
 # Initialize GPIO
 GPIO.setmode(GPIO.BCM)
