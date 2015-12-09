@@ -21,8 +21,8 @@ for i in gp:
 
 # interrupt pin setup
 cb = [interrupt1, interrupt2, interrupt3, interrupt4, interrupt5, interrupt6]  # list of interrupt functions
-for i in gp:
-    for j in cb:
+for i, j in zip(gp, cb):
+
         GPIO.add_event_detect(i, GPIO.FALLING, callback=j, bouncetime=300)
 
 # Draws initial UI
