@@ -3,7 +3,6 @@
 import pygame
 import pygame.gfxdraw
 import RPi.GPIO as GPIO
-import datetime
 from datetime import timedelta
 from background import *
 from pygame.locals import *
@@ -34,19 +33,19 @@ logging.debug(timenow() + " Background Drawn")
 writepidfile()
 
 # mail timers for not spamming notifications initialized for first pass
-tm = tm2 = datetime.datetime(1999, 1, 1, 0, 0, 0, 0)
-lm = lm2 = datetime.datetime(1999, 1, 1, 0, 0, 0, 0)
+tm = tm2 = datetime(1999, 1, 1, 0, 0, 0, 0)
+lm = lm2 = datetime(1999, 1, 1, 0, 0, 0, 0)
 logcount = 0
 logcount2 = 0
 
 while True:  # Main Loop contains 1 loop for offline and 1 loop for online
     logging.debug(timenow() + ' main loop started')
-    while datetime.datetime.now().time() > offlinetime or datetime.datetime.now().time() < onlinetime:
+    while datetime.now().time() > offlinetime or datetime.now().time() < onlinetime:
         timecomp()
         if logcount2 == 0:
             logging.debug(timenow() + '  offline')
             sendmail("offline", 0, 0, NSN, 5)
-            print str(datetime.datetime.now()) + " offline"
+            print str(datetime.now()) + " offline"
             for i in range(1, 4):
                 circles(i, red)
                 footers(i)
@@ -78,7 +77,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
     for i in range(3):
         j = i + 1
         lastTime[i] = findlasttime(j)
-        q = datetime.datetime.strptime(lastTime[i], FMT)
+        q = datetime.strptime(lastTime[i], FMT)
         r = timenow() - q
         e = int(r.total_seconds() / 60)
         if e != ltsec[i]:
