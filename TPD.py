@@ -17,7 +17,7 @@ GPIO.setmode(GPIO.BCM)
 gp = [2, 3, 4, 14, 15, 18]  # Pins to Initialize
 for i in gp:
     GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    logging.debug(timenow() + ' GPIO ' + str(i) + ' setup')
+    logging.debug(str(timenow()) + ' GPIO ' + str(i) + ' setup')
 
 # interrupt pin setup
 cb = [interrupt1, interrupt2, interrupt3, interrupt4, interrupt5, interrupt6]  # list of interrupt functions
@@ -27,7 +27,7 @@ for i, j in zip(gp, cb):
 
 # Draws initial UI
 drawitall()
-logging.debug(timenow() + " Background Drawn")
+logging.debug(str(timenow()) + " Background Drawn")
 
 # store pid to file
 writepidfile()
@@ -39,11 +39,11 @@ logcount = 0
 logcount2 = 0
 
 while True:  # Main Loop contains 1 loop for offline and 1 loop for online
-    logging.debug(timenow() + ' main loop started')
+    logging.debug(str(timenow()) + ' main loop started')
     while datetime.now().time() > offlinetime or datetime.now().time() < onlinetime:
         timecomp()
         if logcount2 == 0:
-            logging.debug(timenow() + '  offline')
+            logging.debug(str(timenow()) + '  offline')
             sendmail("offline", 0, 0, NSN, 5)
             print str(datetime.now()) + " offline"
             for i in range(1, 4):
@@ -68,7 +68,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
     pygame.display.flip()
 
     if logcount == 0:  # online notification first time through
-        logging.debug(timenow() + ' online')
+        logging.debug(str(timenow()) + ' online')
         sendmail("online", 0, 0, NSN, 5)
         logcount = 1
 
@@ -81,7 +81,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         r = timenow() - q
         e = int(r.total_seconds() / 60)
         if e != ltsec[i]:
-            logging.debug(timenow() + ' changing zone' + str(j) + ' to ' + str(e))
+            logging.debug(str(timenow()) + ' changing zone' + str(j) + ' to ' + str(e))
         ltsec[i] = e
         if e < yellowLimit:
             color = green
@@ -104,7 +104,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         if lm + timedelta(0, tba) < tm:
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 1 email sent at " + str(timenow())
-            logging.debug(timenow() + " level 1 email sent")
+            logging.debug(str(timenow()) + " level 1 email sent")
             lm = tm
             Violation(timenow(), 'zone', lvl, max(lastTime))
 
@@ -115,7 +115,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         if lm2 + timedelta(0, tba) < tm:  # check for last email sent and don't send if within tba
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 2 email sent at " + str(timenow())
-            logging.debug(timenow() + " level 2 email sent")
+            logging.debug(str(timenow()) + " level 2 email sent")
             lm2 = tm2
             Violation(timenow(), 'zone', lvl, max(lastTime))
 

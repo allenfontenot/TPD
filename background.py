@@ -23,7 +23,7 @@ def drawitall():
     background.fill(bcolor)
     apron()
     title()
-    logging.debug(timenow() + ' background drawn')
+    logging.debug(str(timenow()) + ' background drawn')
     z = [zone1, zone2, zone3]
     for i in range(1, 4):
         circles(i, green)
@@ -33,7 +33,7 @@ def drawitall():
         number(i, 0)
         compnumber(i, 0)
         comptext(i, ct[i-1])
-    logging.debug(timenow() + ' interface drawn')
+    logging.debug(str(timenow()) + ' interface drawn')
     lcd.blit(background, (0, 0))
     pygame.display.flip()
 
@@ -335,4 +335,4 @@ def exit():
 # Function to return current time for logging
 def timenow():
     a = datetime.now()
-    return str(a)
+    return a
