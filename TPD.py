@@ -3,6 +3,7 @@
 import pygame
 import pygame.gfxdraw
 import RPi.GPIO as GPIO
+import datetime
 from datetime import timedelta
 from background import *
 from pygame.locals import *
