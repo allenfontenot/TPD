@@ -335,4 +335,4 @@ def exit():
 # Function to return current time for logging
 def timenow():
     a = datetime.now()
-    return a
+    return str(a)
