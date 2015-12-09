@@ -1,5 +1,4 @@
 sudo chmod +x /home/pi/TPD/CronScripts/dashonrestart.sh
-sudo chmod +x /home/pi/TPD/CronScripts/simtp.py
 sudo chmod +x /home/pi/TPD/CronScripts/logbackup.py
 sudo chmod +x /home/pi/TPD/CronScripts/logbackup.sh
 
