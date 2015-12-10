@@ -69,7 +69,10 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
 
     if logcount == 0:  # online notification first time through
         logging.debug(str(timenow()) + ' online')
-        sendmail("online", 0, 0, NSN, 5)
+        try:
+            sendmail("online", 0, 0, NSN, 5)
+        except socket.gaierror:
+            return False
         logcount = 1
 
     # subtract stored time from current
