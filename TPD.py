@@ -81,7 +81,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         e = int(r.total_seconds() / 60)
         print 'e = ' + str(e)
         print 'lt = ' + str(ltsec[i])
-        if e is not = ltsec[i]:
+        if e != ltsec[i]:
             logging.debug(str(timenow()) + ' changing zone' + str(j) + ' to ' + str(e))
         ltsec[i] = e
         if e < yellowLimit:
