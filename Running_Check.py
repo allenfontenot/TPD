@@ -11,37 +11,16 @@ logging.basicConfig(filename='logs/debug2.log', level=logging.DEBUG)
 
 logging.debug(str(datetime.datetime.now()) + ' Running Check started')
 
-with open('logs/debug.log', 'r') as qq:
-    qqq = qq.readlines()
-
-lastline = len(qqq) - 1
-
-a = qqq[lastline]
-print a
-FMT = '%Y-%m-%d %H:%M:%S.%f'
-
-b = a.split()
-b2 = str(b[0] + ' ' + b[1])
-
-print b2
-
-c = datetime.datetime.strptime(b2, FMT)
-
-d = datetime.datetime.now()
-
-e = datetime.timedelta(minutes=5)
-
-print c
-
-print d
-
-print d - c
+# PID for TPD is logged in pid.txt, checks if running and restarts if not
+with open('logs/pid.txt', 'r') as qq:
+    qqq = qq.readline()
+pidpath = "/proc/" + str(qqq)
 
 now = datetime.datetime.now()
 msg = str(now) + ' TPD not updating restarting now'
 msg2 = str(now) + ' TPD is working'
 
-if d - c > e:
+if os.path.exists(pidpath) is False:
     sendstoppedmail(NSN, 5)
     logging.debug(msg)
     os.system("sudo shutdown -r now")
