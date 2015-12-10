@@ -1,4 +1,6 @@
+import sys
 import os
+sys.path.insert(0, '/home/pi/TPD')
 import shutil
 from settings import NSN
 import datetime

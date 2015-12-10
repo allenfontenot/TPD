@@ -8,7 +8,7 @@ from sendmail import *
 import os
 import logging
 
-logging.basicConfig(filename='logs/debug.log', level=logging.DEBUG)
+logging.basicConfig(filename='logs/debug2.log', level=logging.DEBUG)
 
 logging.debug(str(datetime.datetime.now()) + ' Running Check started')
 
