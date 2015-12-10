@@ -1,2 +1,2 @@
 
-0 23 * * * pi /home/pi/TPD/CronScripts/logbackup.sh
+0 23 * * * pi /home/pi/TPD/logbackup.sh

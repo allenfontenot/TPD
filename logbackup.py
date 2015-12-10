@@ -1,7 +1,6 @@
-
-sys.path.insert(0, '/home/pi/TPD')
-from settings import NSN
 #!/usr/bin/env python
+
+from settings import NSN
 import sys
 import os
 import datetime

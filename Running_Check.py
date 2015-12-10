@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.insert(0, '/home/pi/TPD')
 from settings import *
 import datetime
 from sendmail import *

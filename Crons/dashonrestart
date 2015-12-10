@@ -1,2 +1,2 @@
 
-@reboot pi /home/pi/TPD/CronScripts/dashonrestart.sh
+@reboot pi /home/pi/TPD/dashonrestart.sh
