@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /home/pi/TPD/CronScripts
+cd /home/pi/TPD
 sudo python logbackup.py
 
 cd /home/pi/TPD/logs
