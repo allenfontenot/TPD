@@ -1,2 +1,2 @@
 
-*/5 4-22 * * * pi /home/pi/TPD/Running_Check.py
+*/5 * * * * pi /home/pi/TPD/Running_Check.sh
