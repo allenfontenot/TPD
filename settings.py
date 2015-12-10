@@ -109,8 +109,6 @@ time2 = []
 time3 = []
 
 lastTime = [0, 0, 0]
-timeDiff = [0, 0, 0]
-nowMinutes = [0, 0, 0]
-thenMinutes = [0, 0, 0]
+ltsec = [0, 0, 0]
 
 FMT = '%Y-%m-%d %H:%M:%S.%f'

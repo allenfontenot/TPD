@@ -73,7 +73,6 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         logcount = 1
 
     # subtract stored time from current
-    ltsec = [0, 0, 0]
     for i in range(3):
         j = i + 1
         lastTime[i] = findlasttime(j)
