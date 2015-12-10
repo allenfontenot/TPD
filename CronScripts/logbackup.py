@@ -23,4 +23,4 @@ os.rename('/home/pi/TPD/logs/travellog.csv', newFilePath)
 os.rename('/home/pi/TPD/logs/debug.log', newFilePathDebug)
 os.rename('/home/pi/TPD/logs/violations.csv', newFilePathViolations)
 
-shutil.copyfile('/home/pi/TPD/logs/travellog.old', '/home/pi/TravelDash/travellog.csv')
+shutil.copyfile('/home/pi/TPD/logs/travellog.old', '/home/pi/TPD/logs/travellog.csv')
