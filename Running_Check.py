@@ -6,6 +6,7 @@ import datetime
 from sendmail import *
 import os
 import logging
+import socket
 
 logging.basicConfig(filename='logs/debug2.log', level=logging.DEBUG)
 
@@ -21,7 +22,10 @@ msg = str(now) + ' TPD not updating restarting now'
 msg2 = str(now) + ' TPD is working'
 
 if os.path.exists(pidpath) is False:
-    sendstoppedmail(NSN, 5)
+    try:
+        sendstoppedmail(NSN, 5)
+    except socket.gaierror:
+        logging.debug(str(now) + ' email failed')
     logging.debug(msg)
     os.system("sudo shutdown -r now")
 else:
