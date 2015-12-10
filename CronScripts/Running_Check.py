@@ -8,6 +8,7 @@ import logging
 
 logging.basicConfig(filename='~/TPD/logs/debug.log', level=logging.DEBUG)
 
+logging.debug(str(datetime.datetime.now()) + ' Running Check started')
 
 with open('/logs/debug.log', 'r') as qq:
     qqq = qq.readlines()
@@ -37,8 +38,11 @@ print d - c
 
 now = datetime.datetime.now()
 msg = str(now) + ' TPD not updating restarting now'
+msg2 = str(now) + ' TPD is working'
 
 if d - c > e:
     sendstoppedmail(NSN, 5)
-    os.system("sudo shutdown -r now")
     logging.debug(msg)
+    os.system("sudo shutdown -r now")
+else:
+    logging.debug(msg2)
