@@ -12,7 +12,7 @@ logging.basicConfig(filename='logs/debug.log', level=logging.DEBUG)
 
 logging.debug(str(datetime.datetime.now()) + ' Running Check started')
 
-with open('/logs/debug.log', 'r') as qq:
+with open('logs/debug.log', 'r') as qq:
     qqq = qq.readlines()
 
 lastline = len(qqq) - 1
