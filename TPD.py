@@ -39,7 +39,7 @@ logcount = 0
 logcount2 = 0
 
 while True:  # Main Loop contains 1 loop for offline and 1 loop for online
-    logging.debug(str(timenow()) + ' main loop started')
+    #logging.debug(str(timenow()) + ' main loop started')
     while datetime.now().time() > offlinetime or datetime.now().time() < onlinetime:
         timecomp()
         if logcount2 == 0:
@@ -81,7 +81,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         e = int(r.total_seconds() / 60)
         print 'e = ' + str(e)
         print 'lt = ' + str(ltsec[i])
-        if e != ltsec[i]:
+        if e is not = ltsec[i]:
             logging.debug(str(timenow()) + ' changing zone' + str(j) + ' to ' + str(e))
         ltsec[i] = e
         if e < yellowLimit:
