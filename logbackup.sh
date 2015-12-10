@@ -1,4 +1,5 @@
 #!/bin/sh
+#!/bin/bash
 
 cd /home/pi/TPD
 sudo python logbackup.py
