@@ -2,6 +2,7 @@ sudo chmod +x /home/pi/TPD/dashonrestart.sh
 sudo chmod +x /home/pi/TPD/logbackup.py
 sudo chmod +x /home/pi/TPD/logbackup.sh
 sudo chmod +x /home/pi/TPD/Running_Check.py
+sudo chmod +x /home/pi/TPD/simtp.py
 
 
 sudo cp /home/pi/TPD/Crons/dashonrestart /etc/cron.d/dashonrestart
