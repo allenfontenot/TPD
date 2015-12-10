@@ -7,6 +7,7 @@ from datetime import timedelta
 from background import *
 from pygame.locals import *
 from sendmail import *
+import socket
 
 os.putenv('SDL_FBDEV', '/dev/fb1')
 pygame.init()
@@ -72,7 +73,8 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         try:
             sendmail("online", 0, 0, NSN, 5)
         except socket.gaierror:
-            return False
+            logging.debug(str(timenow()) + ' email failed')
+
         logcount = 1
 
     # subtract stored time from current
