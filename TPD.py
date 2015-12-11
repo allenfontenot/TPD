@@ -112,7 +112,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
 
         if lm + timedelta(0, tba) < tm:
             try:
-                sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
+                sendmail(ltsec[0], ltsec[1], ltsec[2], NSN, lvl)
             except socket.gaierror:
                 logging.debug(str(timenow()) + ' email failed')
             print "level 1 email sent at " + str(timenow())
@@ -126,7 +126,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
 
         if lm2 + timedelta(0, tba) < tm:  # check for last email sent and don't send if within tba
             try:
-                sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
+                sendmail(ltsec[0], ltsec[1], ltsec[2], NSN, lvl)
             except socket.gaierror:
                 logging.debug(str(timenow()) + ' email failed')
             print "level 2 email sent at " + str(timenow())
