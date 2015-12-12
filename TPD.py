@@ -36,14 +36,15 @@ writepidfile()
 # mail timers for not spamming notifications initialized for first pass
 tm = tm2 = datetime(1999, 1, 1, 0, 0, 0, 0)
 lm = lm2 = datetime(1999, 1, 1, 0, 0, 0, 0)
-logcount = 0
-logcount2 = 0
+onlineFirstRun = True
+offlineFirstRun = True
+fromOffline = False
 
 while True:  # Main Loop contains 1 loop for offline and 1 loop for online
-    #logging.debug(str(timenow()) + ' main loop started')
+
     while datetime.now().time() > offlinetime or datetime.now().time() < onlinetime:
         timecomp()
-        if logcount2 == 0:
+        if offlineFirstRun:
             logging.debug(str(timenow()) + '  offline')
             try:
                 sendmail("offline", 0, 0, NSN, 5)
@@ -57,28 +58,38 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
                 complications(i)
                 comptext(i, ct[i - 1])
                 compnumber(i, "offline")
-            logcount2 = 1
+            offlineFirstRun = False
 
         lcd.blit(background, (0, 0))
         pygame.display.flip()
-        logcount = 0  # so that online loggin and email only sent if offline first
+        onlineFirstRun = True
+        fromOffline = True
         exit()
 
 # Not Offline
-    # draw 3 complications
+    # update complications
     timecomp()
     avgcomp()
     viocomp()
     pygame.display.flip()
 
-    if logcount == 0:  # online notification first time through
+    if onlineFirstRun:  # online notification first time through
+
         logging.debug(str(timenow()) + ' online')
         try:
             sendmail("online", 0, 0, NSN, 5)
         except socket.gaierror:
             logging.debug(str(timenow()) + ' email failed')
 
-        logcount = 1
+        onlineFirstRun = False
+
+    if fromOffline:  # if we came from offline to online then reset all timers
+        outputFile = open('logs/travellog.csv', 'a')
+        outputWriter = csv.writer(outputFile)
+        outputWriter.writerow([timenow(), zone1, 60, NSN])
+        outputWriter.writerow([timenow(), zone2, 60, NSN])
+        outputWriter.writerow([timenow(), zone3, 60, NSN])
+        outputFile.close()
 
     # subtract stored time from current
     for i in range(3):
@@ -87,8 +98,6 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         q = datetime.strptime(lastTime[i], FMT)
         r = timenow() - q
         e = int(r.total_seconds() / 60)
-        #print 'e = ' + str(e)
-        #print 'lt = ' + str(ltsec[i])
         if e != ltsec[i]:
             logging.debug(str(timenow()) + ' changing zone' + str(j) + ' to ' + str(e))
         ltsec[i] = e
@@ -134,5 +143,5 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
             lm2 = tm2
             Violation(timenow(), 'zone', lvl, max(lastTime))
 
-    logcount2 = 0
+    offlineFirstRun = True  # to send the offline notifications when it goes back to that loop
     exit()

@@ -14,3 +14,5 @@ sudo bash dropbox_uploader.sh -s -f .duconfig upload /home/pi/TPD/logs/TPDlogs/*
 sudo bash dropbox_uploader.sh -s -f .duconfig upload /home/pi/TPD/logs/debuglogs/*.txt /debuglogs-gehrig/
 
 sudo bash dropbox_uploader.sh -s -f .duconfig upload /home/pi/TPD/logs/violations/*.csv /violations-gehrig/
+
+sudo ./simtp.py
