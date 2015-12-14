@@ -23,7 +23,7 @@ msg2 = str(now) + ' TPD is working'
 
 if os.path.exists(pidpath) is False:
     try:
-        sendstoppedmail(NSN, 5)
+        sendmail(msg, 0, 0, NSN, 5)
     except socket.gaierror:
         logging.debug(str(now) + ' email failed')
     logging.debug(msg)
