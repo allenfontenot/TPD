@@ -28,3 +28,5 @@ Travel Path Dashboard
 20. sudo chmod +x cronsetup.sh 
 21. sudo ./cronsetup.sh
 22. sudo reboot
+
+add port forward from 22 to 2022 with ip of TPD
