@@ -18,7 +18,7 @@ newFileNameDebug = 'debug-' + NSN + '-' + str(date) + '.txt'
 newFilePathDebug = '/home/pi/TPD/logs/debuglogs/'+newFileNameDebug
 
 newFileNameViolations = 'violations-' + NSN + '-' + str(date) + '.csv'
-newFilePathViolations = '/home/pi/TPD/logs/violations/'+newFileNameDebug
+newFilePathViolations = '/home/pi/TPD/logs/violations/'+newFileNameViolations
 
 os.rename('/home/pi/TPD/logs/travellog.csv', newFilePath)
 os.rename('/home/pi/TPD/logs/debug.log', newFilePathDebug)
