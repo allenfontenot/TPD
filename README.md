@@ -8,7 +8,9 @@ Travel Path Dashboard
 5. sudo raspi-config
 6. change time zone
 7. change password
-8. disable overscan
+8. disable overscan 
+9. boot options boot to command line
+
 9. sudo nano /etc/rsyslog.conf
 10. comment out last 4 lines
       #daemon.*;mail.*;\
