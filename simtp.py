@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 import csv
 import datetime
+from settings import zone1
+from settings import zone2
+from settings import zone3
 
 NSN = 'SIM'
-zone1 = 'Lobby'
-zone2 = 'Stockroom'
-zone3 = 'Drive Thru'
+#zone1 = 'Lobby'
+#zone2 = 'Stockroom'
+#zone3 = 'Drive Thru'
 time1 = []
 time2 = []
 time3 = []
