@@ -90,6 +90,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         outputWriter.writerow([timenow(), zone2, 60, NSN])
         outputWriter.writerow([timenow(), zone3, 60, NSN])
         outputFile.close()
+        fromOffline = False
 
     # subtract stored time from current
     for i in range(3):
