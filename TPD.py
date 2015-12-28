@@ -11,7 +11,7 @@ import socket
 import json
 import httplib
 
-connection = httplib.GTTPSConnection('api.parse.com', 443)
+connection = httplib.HTTPSConnection('api.parse.com', 443)
 
 os.putenv('SDL_FBDEV', '/dev/fb1')
 pygame.init()
@@ -119,6 +119,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
             lcd.blit(background, (0, 0))
             pygame.display.flip()
             # send updated numbers to parse
+            objectid = ""
             if i == 0:
                 objectid = z1ids[NSNlist.index(NSN)]
             elif i == 1:
@@ -126,7 +127,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
             elif i == 2:
                 objectid = z1ids[NSNlist.index(NSN)]
 
-            objectstring = '/1/classes/lasttravel' + objectid
+            objectstring = '/1/classes/lasttravel' + str(objectid)
             connection.connect()
             connection.request('PUT', objectstring,
                                json.dumps({"minutes": e}),
