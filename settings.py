@@ -26,7 +26,7 @@ mailtimeLevel2 = 240
 mailtimeLevel3 = mailtimeLevel2
 
 #Store List
-NSNlist = [2098,3339,4580,6610,6631,10841,13057,13469,21322,23291]
+NSNlist = ['2098','3339','4580','6610','6631','10841','13057','13469','21322','23291']
 
 #Parse object IDs
 z12098 = "KdZ6RniAPF"; z22098 = "bAapXYV0hA"; z32098 = "TpUjU5ZA8L"
