@@ -24,6 +24,31 @@ redLimit = 120
 mailtimeLevel1 = 135
 mailtimeLevel2 = 240
 mailtimeLevel3 = mailtimeLevel2
+
+#Parse object IDs
+z12098 = "KdZ6RniAPF"; z22098 = "bAapXYV0hA"; z32098 = "TpUjU5ZA8L"
+###
+z13339 = "Os2J7m1mOT"; z23339 = "WwQQhFJOYh"; z33339 = "ijaQCVhihV"
+###
+z14580 = "i9dQstChgT"; z24580 = "yubw8E40LX"; z34580 = "Kbpi3uwCN0"
+###
+z16610 = "24LFuCSEMt"; z26610 = "17xRCiGOUu"; z36610 = "8ma1OGrTZE"
+###
+z16631 = "snlz841ZWH"; z26631 = "OL1l5ZIhKs"; z36631 = "RSCeuMdr5K"
+###
+z110841 = "Peny2GOWow"; z210841 = "sAzD0Q3kIY"; z310841 = "csruG6uPjm"
+###
+z113057 = "jvXGOQNJlf"; z213057 = "puyNAxJoBR"; z313057 = "anWtBQX2Ti"
+###
+z113469 = "VtGCZi5ijN"; z213469 = "DkLo9JTbgY"; z313469 = "xSBmQxiODc"
+###
+z121322 = "nLyIPf5GDK"; z221322 = "nuRQUqAwx5"; z321322 = "BcF10WqXQ1"
+###
+z123291 = "ZMtAagF221"; z223291 = "pFi68QgWZw"; z323291 = "essjCqMA2F"
+
+z1ids = [z12098, z13339, z14580, z16610, z16631, z110841, z113057, z113469, z121322, z123291]
+z2ids = [z22098, z23339, z24580, z26610, z26631, z210841, z213057, z213469, z221322, z223291]
+z3ids = [z32098, z33339, z34580, z36610, z36631, z310841, z313057, z313469, z321322, z323291]
 # minimum time between email alerts in seconds 30min = 1800
 tba = 1800
 ##
