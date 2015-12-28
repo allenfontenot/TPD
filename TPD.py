@@ -101,19 +101,19 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
         e = int(r.total_seconds() / 60)
         if e != ltsec[i]:
             logging.debug(str(timenow()) + ' changing zone' + str(j) + ' to ' + str(e))
-        ltsec[i] = e
-        if e < yellowLimit:
-            color = green
-        elif redLimit > e >= yellowLimit:
-            color = yellow
-        else:
-            color = red
-        circles(j, color)
-        footers(j)
-        number(j, e)
+            ltsec[i] = e
+            if e < yellowLimit:
+                color = green
+            elif redLimit > e >= yellowLimit:
+                color = yellow
+            else:
+                color = red
+            circles(j, color)
+            footers(j)
+            number(j, e)
 
-    lcd.blit(background, (0, 0))
-    pygame.display.flip()
+            lcd.blit(background, (0, 0))
+            pygame.display.flip()
 
     # Check for violations
     if max(ltsec) >= mailtimeLevel1:  # only checks the highest value...doesn't matter which is higher
