@@ -127,7 +127,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
             elif i == 2:
                 objectid = z1ids[NSNlist.index(NSN)]
 
-            objectstring = '/1/classes/lasttravel' + str(objectid)
+            objectstring = '/1/classes/lasttravel/' + str(objectid)
             connection.connect()
             connection.request('PUT', objectstring,
                                json.dumps({"minutes": e}),
