@@ -126,16 +126,20 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
                 objectid = z2ids[NSNlist.index(NSN)]
             elif i == 2:
                 objectid = z3ids[NSNlist.index(NSN)]
-
+            
             objectstring = '/1/classes/lasttravel/' + str(objectid)
-            connection.connect()
-            connection.request('PUT', objectstring,
-                               json.dumps({"minutes": e}),
-                               {"X-Parse-Application-Id": "BupCLnOBroEGuXa9qkAWebNSzT0o18MTUQeXNJXO",
-                                "X-Parse-REST-API-Key": "oSYBMvF2ET9RvyWhxnIpYa27rObd4XATJoh9zueh",
-                                "Content-Type": "application/json"})
-            result = json.loads(connection.getresponse().read())
-            logging.debug(result)
+            try:
+                connection.connect()
+                connection.request('PUT', objectstring,
+                                   json.dumps({"minutes": e}),
+                                   {"X-Parse-Application-Id": "BupCLnOBroEGuXa9qkAWebNSzT0o18MTUQeXNJXO",
+                                    "X-Parse-REST-API-Key": "oSYBMvF2ET9RvyWhxnIpYa27rObd4XATJoh9zueh",
+                                    "Content-Type": "application/json"})
+                result = json.loads(connection.getresponse().read())
+                logging.debug(result)
+            except Exception:
+                logging.debug("Parse Connection Failed")
+                pass
 
     # Check for violations
     if max(ltsec) >= mailtimeLevel1:  # only checks the highest value...doesn't matter which is higher
