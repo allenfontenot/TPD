@@ -9,6 +9,7 @@ from settings import NSNlist
 ###GET VALUES FROM LOG###
 violation = 0
 average = 0
+
 firstTravelPath = ""
 lastTravelPath = ""
 
