@@ -1,0 +1,2 @@
+
+30 22 * * * pi /home/pi/TPD/nightlyNumbers.sh
