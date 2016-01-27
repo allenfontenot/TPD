@@ -3,13 +3,14 @@
 from background import *
 import json
 import httplib
-from settings import NSN
+#from settings import NSN
 from settings import NSNlist
+
+NSN = '10841'
 
 ###GET VALUES FROM LOG###
 violation = 0
 average = 0
-
 firstTravelPath = ""
 lastTravelPath = ""
 
@@ -20,13 +21,20 @@ bb = []
 with open('logs/travellog.csv') as csvfile:
     reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in reader:
+        print row
         a = int(row[2])
+        print 'a=' + str(a)
         b = row[0]
+        print 'b=' + str(b)
         zd1.append(a)
         bb.append(b)
 
+        print zd1
+        print bb
 zd2 = filter(lambda aa: aa != 0, zd1)  # takes out the zeroes
+
 average = sum(zd2) / len(zd2)
+
 lastTravelPath = bb[(len(bb)-1)]
 firstTravelPath = bb[7]
 ###############
@@ -55,22 +63,39 @@ monthlyObjectId = monthlyObjectIdList[NSNlist.index(NSN)]
 weeklyObjectString = '/1/classes/weeklyNumbers/' + str(weeklyObjectId)
 yesterdayObjectString = '/1/classes/yesterdayNumbers/' + str(yesterdayObjectId)
 mothlyObjectString = '/1/classes/monthlyNumbers/' + str(monthlyObjectId)
-
-
-
-
-
-
-
 try:
     connection.connect()
     connection.request('PUT', yesterdayObjectString,
-                       json.dumps({"violation": violation},{"average": average},{"lastTravelPath": lastTravelPath},{"firstTravelPath": firstTravelPath}),
+                       json.dumps({"violation": violation}),
                        {"X-Parse-Application-Id": "BupCLnOBroEGuXa9qkAWebNSzT0o18MTUQeXNJXO",
                         "X-Parse-REST-API-Key": "oSYBMvF2ET9RvyWhxnIpYa27rObd4XATJoh9zueh",
                         "Content-Type": "application/json"})
     result = json.loads(connection.getresponse().read())
     logging.debug(result)
+    connection.request('PUT', yesterdayObjectString,
+                       json.dumps({"average": average}),
+                       {"X-Parse-Application-Id": "BupCLnOBroEGuXa9qkAWebNSzT0o18MTUQeXNJXO",
+                        "X-Parse-REST-API-Key": "oSYBMvF2ET9RvyWhxnIpYa27rObd4XATJoh9zueh",
+                        "Content-Type": "application/json"})
+    result = json.loads(connection.getresponse().read())
+    logging.debug(result)
+
+    connection.request('PUT', yesterdayObjectString,
+                       json.dumps({"lastTravelPath": lastTravelPath}),
+                       {"X-Parse-Application-Id": "BupCLnOBroEGuXa9qkAWebNSzT0o18MTUQeXNJXO",
+                        "X-Parse-REST-API-Key": "oSYBMvF2ET9RvyWhxnIpYa27rObd4XATJoh9zueh",
+                        "Content-Type": "application/json"})
+    result = json.loads(connection.getresponse().read())
+    logging.debug(result)
+    connection.request('PUT', yesterdayObjectString,
+                       json.dumps({"firstTravelPath": firstTravelPath}),
+                       {"X-Parse-Application-Id": "BupCLnOBroEGuXa9qkAWebNSzT0o18MTUQeXNJXO",
+                        "X-Parse-REST-API-Key": "oSYBMvF2ET9RvyWhxnIpYa27rObd4XATJoh9zueh",
+                        "Content-Type": "application/json"})
+    result = json.loads(connection.getresponse().read())
+    logging.debug(result)
+
 except Exception:
     logging.debug("Parse Connection Failed")
     pass
+
