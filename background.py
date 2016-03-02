@@ -28,11 +28,12 @@ def drawitall():
     for i in range(1, 4):
         circles(i, green)
         headers(z[i-1], i)
-        footers(i)
+        #footers(i)
         complications(i)
         number(i, 0)
         compnumber(i, 0)
         comptext(i, ct[i-1])
+        travelList(i)
     logging.debug(str(timenow()) + ' interface drawn')
     lcd.blit(background, (0, 0))
     pygame.display.flip()
@@ -104,6 +105,57 @@ def footers(pos):
         fpos.center = (h3x, fy)
     background.blit(f, fpos)
 
+def travelList(pos):
+    zz = 645
+    if pos == 1:
+        e = ff.render('minimums', 1, fcolor)
+        f = cff.render('tables & trash', 1, fcolor)
+        g = cff.render('drink station', 1, fcolor)
+        h = cff.render('bathrooms', 1, fcolor)
+        epos = e.get_rect()
+        fpos = f.get_rect()
+        gpos = g.get_rect()
+        hpos = h.get_rect()
+    elif pos == 2:
+        e = ff.render('minimums', 1, fcolor)
+        f = cff.render('listen to 2 orders', 1, fcolor)
+        g = cff.render('lot & corral', 1, fcolor)
+        h = cff.render('lights', 1, fcolor)
+        epos = e.get_rect()
+        fpos = f.get_rect()
+        gpos = g.get_rect()
+        hpos = h.get_rect()
+    elif pos ==3:
+        e = ff.render('minimums', 1, fcolor)
+        f = cff.render('cooler & freezer', 1, fcolor)
+        g = cff.render('compactor', 1, fcolor)
+        h = cff.render('back door', 1, fcolor)
+        epos = e.get_rect()
+        fpos = f.get_rect()
+        gpos = g.get_rect()
+        hpos = h.get_rect()
+    if pos == 1:
+        epos.center = (h1x, zz-35)
+        fpos.center = (h1x, zz)
+        gpos.center = (h1x, zz+20)
+        hpos.center = (h1x, zz+40)
+
+    elif pos == 2:
+        epos.center = (h2x, zz-35)
+        fpos.center = (h2x, zz)
+        gpos.center = (h2x, zz+20)
+        hpos.center = (h2x, zz+40)
+    elif pos == 3:
+        epos.center = (h3x, zz-35)
+        fpos.center = (h3x, zz)
+        gpos.center = (h3x, zz+20)
+        hpos.center = (h3x, zz+40)
+
+    background.blit(e, epos)
+    background.blit(f, fpos)
+    background.blit(g, gpos)
+    background.blit(h, hpos)
+
 
 def title():
     t1 = tf.render('Last', 1, tcolor)
@@ -140,11 +192,11 @@ def number(pos, n):
     n = nf.render(str(n), 1, fcolor)
     npos = n.get_rect()
     if pos == 1:
-        npos.center = z1c
+        npos.center = (228, 515 - 20)
     elif pos == 2:
-        npos.center = z2c
+        npos.center = (682, 515 - 20)
     elif pos == 3:
-        npos.center = z3c
+        npos.center = (1132,515 - 20)
     background.blit(n, npos)
 
 
