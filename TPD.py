@@ -2,7 +2,7 @@
 
 import pygame
 import pygame.gfxdraw
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from datetime import timedelta
 from background import *
 from pygame.locals import *
@@ -18,17 +18,17 @@ pygame.init()
 logging.basicConfig(filename='logs/debug.log', level=logging.DEBUG)
 
 # Initialize GPIO
-#GPIO.setmode(GPIO.BCM)
-#gp = [2, 3, 4, 14, 15, 18]  # Pins to Initialize
-#for i in gp:
-#    GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-#    logging.debug(str(timenow()) + ' GPIO ' + str(i) + ' setup')#
+GPIO.setmode(GPIO.BCM)
+gp = [2, 3, 4, 14, 15, 18]  # Pins to Initialize
+for i in gp:
+    GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    logging.debug(str(timenow()) + ' GPIO ' + str(i) + ' setup')#
 
 # interrupt pin setup
-#cb = [interrupt1, interrupt2, interrupt3, interrupt4, interrupt5, interrupt6]  # list of interrupt functions
-#for i, j in zip(gp, cb):
+cb = [interrupt1, interrupt2, interrupt3, interrupt4, interrupt5, interrupt6]  # list of interrupt functions
+for i, j in zip(gp, cb):
 
-#        GPIO.add_event_detect(i, GPIO.FALLING, callback=j, bouncetime=300)
+        GPIO.add_event_detect(i, GPIO.FALLING, callback=j, bouncetime=300)
 
 # Draws initial UI
 drawitall()
