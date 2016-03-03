@@ -32,3 +32,4 @@ Travel Path Dashboard
 22. sudo reboot
 
 add port forward from 22 to 2022 with ip of TPD
+if time doesn't sync use sudo timedatectl set-ntp true
