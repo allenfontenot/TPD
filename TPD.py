@@ -10,6 +10,7 @@ from sendmail import *
 import socket
 import json
 import httplib
+from smtplib import SMTPRecipientsRefused
 
 connection = httplib.HTTPSConnection('api.parse.com', 443)
 
@@ -54,6 +55,8 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
                 sendmail("offline", 0, 0, NSN, 5)
             except socket.gaierror:
                 logging.debug(str(timenow()) + ' email failed')
+             except SMTPRecipientsRefused:
+                logging.debug(str(timenow()) + ' email failed SMTPRecipientsRefused')
             print str(datetime.now()) + " offline"
             for i in range(1, 4):
                 circles(i, red)
@@ -84,6 +87,8 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
             sendmail("online", 0, 0, NSN, 5)
         except socket.gaierror:
             logging.debug(str(timenow()) + ' email failed')
+         except SMTPRecipientsRefused:
+                logging.debug(str(timenow()) + ' email failed SMTPRecipientsRefused')
 
         onlineFirstRun = False
 
@@ -151,6 +156,8 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
                 sendmail(ltsec[0], ltsec[1], ltsec[2], NSN, lvl)
             except socket.gaierror:
                 logging.debug(str(timenow()) + ' email failed')
+            except SMTPRecipientsRefused:
+                logging.debug(str(timenow()) + ' email failed SMTPRecipientsRefused')
             print "level 1 email sent at " + str(timenow())
             logging.debug(str(timenow()) + " level 1 email sent")
             lm = tm
@@ -165,6 +172,8 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
                 sendmail(ltsec[0], ltsec[1], ltsec[2], NSN, lvl)
             except socket.gaierror:
                 logging.debug(str(timenow()) + ' email failed')
+            except SMTPRecipientsRefused:
+                logging.debug(str(timenow()) + ' email failed SMTPRecipientsRefused')
             print "level 2 email sent at " + str(timenow())
             logging.debug(str(timenow()) + " level 2 email sent")
             lm2 = tm2
