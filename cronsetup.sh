@@ -23,6 +23,6 @@ sudo chmod +x /etc/cron.d/isRunningCheck
 sudo chmod +x /etc/cron.d/amreboot
 sudo chmod +x /etc/cron.d/nightlyNumbers
 sudo chmod +x /home/pi/TPD/dropbox_uploader.sh
-sudo chmod +x /home/pi/TPD/update_emails
+sudo chmod +x /etc/cron.d/update_emails
 
 sudo python simtp.py
