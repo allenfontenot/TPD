@@ -8,7 +8,7 @@ sudo chmod +x /home/pi/TPD/simtp.py
 sudo chmod +x /home/pi/TPD/amreboot.sh
 sudo chmod +x /home/pi/TPD/nightlyNumbers.sh
 sudo chmod +x /home/pi/TPD/nightlyNumbers.py
-update_emails
+sudo chmod +x /home/pi/TPD/emailupdate.sh
 
 sudo cp /home/pi/TPD/Crons/dashonrestart /etc/cron.d/dashonrestart
 sudo cp /home/pi/TPD/Crons/logbackup /etc/cron.d/logbackup
