@@ -1,0 +1,2 @@
+
+0 6 * * * pi /home/pi/TPD/logbackup.sh
