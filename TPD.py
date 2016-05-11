@@ -87,7 +87,7 @@ while True:  # Main Loop contains 1 loop for offline and 1 loop for online
             sendmail("online", 0, 0, NSN, 5)
         except socket.gaierror:
             logging.debug(str(timenow()) + ' email failed')
-         except SMTPRecipientsRefused:
+        except SMTPRecipientsRefused:
                 logging.debug(str(timenow()) + ' email failed SMTPRecipientsRefused')
 
         onlineFirstRun = False
