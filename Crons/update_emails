@@ -1,2 +1,2 @@
 
-0 6 * * * pi /home/pi/TPD/logbackup.sh
+0 6 * * * pi /home/pi/TPD/emailupdate.sh
